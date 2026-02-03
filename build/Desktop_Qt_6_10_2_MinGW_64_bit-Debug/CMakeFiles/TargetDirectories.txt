@@ -1,0 +1,5 @@
+D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/ArtFlowStudio.dir
+D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/ArtFlowStudio_autogen_timestamp_deps.dir
+D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/CMakeFiles/ArtFlowStudio_autogen.dir

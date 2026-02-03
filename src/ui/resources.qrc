@@ -1,0 +1,28 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+    <file>qml/main_pro.qml</file>
+    <file>qml/Translations.js</file>
+    <file>qml/components/AppButton.qml</file>
+    <file>qml/components/DashboardView.qml</file>
+    <file>qml/components/GalleryView.qml</file>
+    <file>qml/components/StackFolder.qml</file>
+    <file>qml/components/PreferencesDialog.qml</file>
+    <file>qml/components/ProjectNavigator.qml</file>
+    <file>qml/components/SidebarButton.qml</file>
+    <file>qml/components/ToastManager.qml</file>
+    <file>qml/components/ProSlider.qml</file>
+    <file>qml/components/SmartCursor.qml</file>
+    <file>qml/components/LayerDelegate.qml</file>
+    <file>qml/components/ColorDropOrb.qml</file>
+    <file>qml/components/BrushLibrary.qml</file>
+    <file>qml/components/CustomColorSlider.qml</file>
+    <file>qml/components/HeroTransition.qml</file>
+    <file>qml/components/NewSketchbookDialog.qml</file>
+    <file>qml/components/PopOverPanel.qml</file>
+    <file>qml/components/ProjectGroupView.qml</file>
+    <file>qml/components/ProjectStackCover.qml</file>
+    <file>qml/components/SketchbookCover.qml</file>
+    <file>qml/components/VideoExportDialog.qml</file>
+    <file>qml/components/PressureSettingsDialog.qml</file>
+</qresource>
+</RCC>

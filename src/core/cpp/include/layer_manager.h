@@ -32,14 +32,22 @@ enum class BlendMode {
  * Layer - Single layer with buffer and properties
  */
 struct Layer {
+    enum class Type { Drawing, Group, Background };
+
     std::string name;
-    std::unique_ptr<ImageBuffer> buffer;
+    std::unique_ptr<ImageBuffer> buffer;       // Main RGBA display buffer
+    std::unique_ptr<ImageBuffer> wetnessMap;    // 0-255 map of surface wetness
+    std::unique_ptr<ImageBuffer> pigmentMap;    // Detailed pigment density map
+    
     float opacity = 1.0f;
     BlendMode blendMode = BlendMode::Normal;
     bool visible = true;
     bool locked = false;
+    bool alphaLock = false;
+    bool clipped = false;
+    Type type = Type::Drawing;
     
-    Layer(const std::string& name, int width, int height);
+    Layer(const std::string& name, int width, int height, Type type = Type::Drawing);
 };
 
 /**
@@ -51,11 +59,14 @@ public:
     ~LayerManager();
     
     // Layer operations
-    int addLayer(const std::string& name);
+    int addLayer(const std::string& name, Layer::Type type = Layer::Type::Drawing);
     void removeLayer(int index);
     void moveLayer(int fromIndex, int toIndex);
     void duplicateLayer(int index);
     void mergeDown(int index);
+    
+    // Color Sampling
+    void sampleColor(int x, int y, uint8_t* r, uint8_t* g, uint8_t* b, uint8_t* a, int mode = 0) const;
     
     // Access layers
     Layer* getLayer(int index);

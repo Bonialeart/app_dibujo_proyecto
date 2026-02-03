@@ -1,0 +1,27 @@
+# ninja log v6
+4145	6650	7918572480000000	ArtFlowStudio.exe	16ccaa9076551c00
+36	426	7918572429500000	ArtFlowStudio_autogen/timestamp	f6c7a92c6c003061
+36	426	7918572429500000	ArtFlowStudio_autogen/mocs_compilation.cpp	f6c7a92c6c003061
+36	426	7918572429500000	D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/ArtFlowStudio_autogen/timestamp	f6c7a92c6c003061
+36	426	7918572429500000	D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/ArtFlowStudio_autogen/mocs_compilation.cpp	f6c7a92c6c003061
+1308	1691	7918549620000000	D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/ArtFlowStudio_autogen/YPKJ5OE7LN/qrc_resources.cpp	5695af19558cb34f
+1171	1642	7918551660000000	CMakeFiles/ArtFlowStudio.dir/ArtFlowStudio_autogen/YPKJ5OE7LN/qrc_resources.cpp.obj	2301596011b44ed6
+1128	1721	7918551660000000	CMakeFiles/ArtFlowStudio.dir/src/core/cpp/src/color_utils.cpp.obj	f0a34c6b0f4911d5
+1308	1691	7918549620000000	ArtFlowStudio_autogen/YPKJ5OE7LN/qrc_resources.cpp	5695af19558cb34f
+1047	2105	7918571620000000	CMakeFiles/ArtFlowStudio.dir/src/core/cpp/src/image_buffer.cpp.obj	f2cb20778feed423
+1043	2111	7918571620000000	CMakeFiles/ArtFlowStudio.dir/src/core/cpp/src/layer_manager.cpp.obj	ead74d9e46c93faf
+66	2438	7918551700000000	CMakeFiles/ArtFlowStudio.dir/src/core/cpp/src/gl_utils.cpp.obj	267a7ea384692455
+72	2960	7918551700000000	CMakeFiles/ArtFlowStudio.dir/src/core/cpp/src/stroke_renderer.cpp.obj	138f1aba84241c27
+91	4079	7918551700000000	CMakeFiles/ArtFlowStudio.dir/src/ProjectModel.cpp.obj	5fd9d07c11a7465d
+1040	2094	7918571620000000	CMakeFiles/ArtFlowStudio.dir/src/core/cpp/src/brush_engine.cpp.obj	6e691d9b8b7c0f9c
+1050	4689	7918571620000000	CMakeFiles/ArtFlowStudio.dir/src/main.cpp.obj	61559547f1d7aa2c
+1034	5162	7918571620000000	CMakeFiles/ArtFlowStudio.dir/ArtFlowStudio_autogen/mocs_compilation.cpp.obj	58d7639017ab7983
+427	4145	7918572440000000	CMakeFiles/ArtFlowStudio.dir/src/CanvasItem.cpp.obj	c9dd8c3ae4dc5ab2
+978	2920	7918553460000000	CMakeFiles/ArtFlowStudio.dir/src/PreferencesManager.cpp.obj	a359745fd8f79584
+39	938	7918582000000000	ArtFlowStudio_autogen/timestamp	f6c7a92c6c003061
+39	938	7918582000000000	ArtFlowStudio_autogen/mocs_compilation.cpp	f6c7a92c6c003061
+39	938	7918582000000000	D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/ArtFlowStudio_autogen/timestamp	f6c7a92c6c003061
+39	938	7918582000000000	D:/app_dibujo_proyecto/build/Desktop_Qt_6_10_2_MinGW_64_bit-Debug/ArtFlowStudio_autogen/mocs_compilation.cpp	f6c7a92c6c003061
+943	1648	7918582000000000	CMakeFiles/ArtFlowStudio.dir/src/core/cpp/src/brush_engine.cpp.obj	6e691d9b8b7c0f9c
+946	4551	7918582000000000	CMakeFiles/ArtFlowStudio.dir/src/main.cpp.obj	61559547f1d7aa2c
+938	4974	7918582000000000	CMakeFiles/ArtFlowStudio.dir/ArtFlowStudio_autogen/mocs_compilation.cpp.obj	58d7639017ab7983

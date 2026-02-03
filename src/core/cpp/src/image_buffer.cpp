@@ -47,25 +47,39 @@ void ImageBuffer::clear() {
     std::memset(m_data.data(), 0, m_data.size());
 }
 
-void ImageBuffer::blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+void ImageBuffer::blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint8_t a, bool alphaLock) {
     if (!isValidCoord(x, y)) return;
     
     size_t idx = pixelIndex(x, y);
+    uint8_t dstAlphaRaw = m_data[idx + 3];
+    if (alphaLock && dstAlphaRaw == 0) return;
+
     float srcA = a / 255.0f;
-    float dstA = m_data[idx + 3] / 255.0f;
+    float dstA = dstAlphaRaw / 255.0f;
     float outA = srcA + dstA * (1.0f - srcA);
+
+    // Alpha Lock: restrict final alpha to original or blend but don't exceed?
+    // Usually Alpha Lock means Alpha is unchanged in the mask areas.
+    if (alphaLock) {
+        outA = dstA; 
+        if (outA <= 0.001f) return;
+        // Re-adjust srcA to be relative to the lock if needed, 
+        // but typically it means we just blend color but keep dstA.
+        srcA = std::min(srcA, outA); 
+    }
     
     if (outA > 0.0f) {
-        m_data[idx + 0] = static_cast<uint8_t>((r * srcA + m_data[idx + 0] * dstA * (1.0f - srcA)) / outA);
-        m_data[idx + 1] = static_cast<uint8_t>((g * srcA + m_data[idx + 1] * dstA * (1.0f - srcA)) / outA);
-        m_data[idx + 2] = static_cast<uint8_t>((b * srcA + m_data[idx + 2] * dstA * (1.0f - srcA)) / outA);
+        float invSrcA = 1.0f - srcA;
+        m_data[idx + 0] = static_cast<uint8_t>(std::clamp((r * srcA + m_data[idx + 0] * dstA * invSrcA) / outA, 0.0f, 255.0f));
+        m_data[idx + 1] = static_cast<uint8_t>(std::clamp((g * srcA + m_data[idx + 1] * dstA * invSrcA) / outA, 0.0f, 255.0f));
+        m_data[idx + 2] = static_cast<uint8_t>(std::clamp((b * srcA + m_data[idx + 2] * dstA * invSrcA) / outA, 0.0f, 255.0f));
     }
-    m_data[idx + 3] = static_cast<uint8_t>(outA * 255);
+    m_data[idx + 3] = static_cast<uint8_t>(std::clamp(outA * 255, 0.0f, 255.0f));
 }
 
 void ImageBuffer::drawCircle(int cx, int cy, float radius, 
                               uint8_t r, uint8_t g, uint8_t b, uint8_t a,
-                              float hardness, float grain) {
+                              float hardness, float grain, bool alphaLock, const ImageBuffer* mask) {
     int minX = std::max(0, static_cast<int>(cx - radius - 1));
     int maxX = std::min(m_width - 1, static_cast<int>(cx + radius + 1));
     int minY = std::max(0, static_cast<int>(cy - radius - 1));
@@ -103,8 +117,19 @@ void ImageBuffer::drawCircle(int cx, int cy, float radius,
                 }
                 
                 uint8_t pixelA = static_cast<uint8_t>(a * falloff * noise);
+                
+                // Clipping Mask support
+                if (mask) {
+                    const uint8_t* mP = mask->pixelAt(px, py);
+                    if (mP) {
+                        pixelA = static_cast<uint8_t>(pixelA * (mP[3] / 255.0f));
+                    } else {
+                        pixelA = 0;
+                    }
+                }
+
                 if (pixelA > 0) {
-                    blendPixel(px, py, r, g, b, pixelA);
+                    blendPixel(px, py, r, g, b, pixelA, alphaLock);
                 }
             }
         }

@@ -10,6 +10,8 @@
 #include <memory>
 #include <string>
 
+#include "image_buffer.h"
+
 namespace artflow {
 
 // Color representation (RGBA)
@@ -44,18 +46,24 @@ struct BrushSettings {
     float flow = 1.0f;           // Paint flow rate
     float spacing = 0.1f;        // Stroke spacing (% of size)
     float grain = 0.0f;          // Texture grain (0.0 to 1.0)
-    bool sizeByPressure = true;  // Size affected by pressure
-    bool opacityByPressure = false;
     
-    // Pro Features
-    float jitter = 0.0f;          // Position jitter (0.0 to 1.0)
+    // Dynamics
+    bool sizeByPressure = true;    // Size affected by pressure
+    bool opacityByPressure = false; // Opacity affected by pressure
+    float velocityDynamics = 0.0f; // -1.0 to 1.0 (negative = thinner when fast)
+    
+    // Stabilization (Pro Features)
     float stabilization = 0.4f;   // Stroke smoothing (0.0 to 1.0)
-    float rotation = 0.0f;        // Static rotation in degrees
-    bool rotateWithStroke = false; // Dynamics: Rotate with direction
+    float streamline = 0.0f;      // Corrects path to be smoother (0.0 to 1.0)
+    float jitter = 0.0f;          // Position jitter (0.0 to 1.0)
     
-    // Texture support
+    // Texture & Stamp
     int textureId = -1;           // -1 = Solid, >=0 = Texture ID
     float textureScale = 1.0f;
+    float wetness = 0.0f;         // 0.0 (dry) to 1.0 (soaking)
+    float smudge = 0.0f;          // 0.0 (no smudge) to 1.0 (pure smudge)
+    std::shared_ptr<ImageBuffer> tipImage; // Custom stamp/dab image
+    std::shared_ptr<ImageBuffer> paperTexture; // Global paper grain
     
     // Brush type
     enum class Type {
@@ -70,8 +78,6 @@ struct BrushSettings {
     } type = Type::Round;
 };
 
-// Forward declaration
-class ImageBuffer;
 
 /**
  * BrushEngine - Core brush rendering system
@@ -94,13 +100,15 @@ public:
     void continueStroke(const StrokePoint& point);
     void endStroke();
     
-    // Render a single dab at position
-    void renderDab(ImageBuffer& target, float x, float y, float pressure);
+    // Render a single dab at position. Mask is used for Clipping Masks.
+    void renderDab(ImageBuffer& target, float x, float y, float pressure, 
+                   bool alphaLock = false, const ImageBuffer* mask = nullptr);
     
     // Render stroke segment between two points
     void renderStrokeSegment(ImageBuffer& target, 
                               const StrokePoint& from, 
-                              const StrokePoint& to);
+                              const StrokePoint& to,
+                              bool alphaLock = false, const ImageBuffer* mask = nullptr);
     
     // Get interpolated stroke points for smooth rendering
     std::vector<StrokePoint> interpolatePoints(const StrokePoint& from, 
