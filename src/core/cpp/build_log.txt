@@ -1,0 +1,43 @@
+Qt Headers found at: C:/Users/alejandro/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/PyQt6/Qt6/include
+running build_ext
+building 'artflow_native' extension
+"C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\bin\HostX86\x64\cl.exe" /c /nologo /O2 /W3 /GL /DNDEBUG /MD -IE:\app_dibujo_proyecto\src\core\cpp\include -IE:\app_dibujo_proyecto\src\core\canvas -IC:\Users\alejandro\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\pybind11\include -IC:/Users/alejandro/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/PyQt6/Qt6/include -IC:/Users/alejandro/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/PyQt6/Qt6/include\QtCore -IC:/Users/alejandro/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/PyQt6/Qt6/include\QtGui -IC:/Users/alejandro/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/PyQt6/Qt6/include\QtOpenGL -IC:\Users\alejandro\AppData\Local\Python\pythoncore-3.14-64\include -IC:\Users\alejandro\AppData\Local\Python\pythoncore-3.14-64\Include "-IC:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\include" "-IC:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.50.35717\ATLMFC\include" "-IC:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Auxiliary\VS\include" "-IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt" "-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt" "-IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" /EHsc /TpE:\app_dibujo_proyecto\src\core\canvas\renderer.cpp /Fobuild\temp.win-amd64-cpython-314\Release\app_dibujo_proyecto\src\core\canvas\renderer.obj /std:c++17
+renderer.cpp
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(187): error C2059: error de sintaxis: ')'
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(187): error C2001: nueva línea en constante
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(187): error C2059: error de sintaxis: 'cadena'
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(190): error C2065: 'width': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(190): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(191): error C2065: 'height': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(191): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(192): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(193): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(194): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(195): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(196): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(197): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(198): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(199): error C2059: error de sintaxis: '{'
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(199): error C2143: error de sintaxis: falta ';' delante de '{'
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(199): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(217): error C3861: 'glGenFramebuffers': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(221): error C2065: 'GL_FRAMEBUFFER': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(221): error C3861: 'glBindFramebuffer': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(229): error C2065: 'GL_CLAMP_TO_EDGE': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(230): error C2065: 'GL_CLAMP_TO_EDGE': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(232): error C2065: 'GL_FRAMEBUFFER': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(232): error C2065: 'GL_COLOR_ATTACHMENT0': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(232): error C3861: 'glFramebufferTexture2D': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(235): error C2065: 'GL_FRAMEBUFFER': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(235): error C3861: 'glBindFramebuffer': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(276): error C3861: 'glDeleteFramebuffers': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(278): error C3861: 'glDeleteRenderbuffers': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(280): error C3861: 'glDeleteProgram': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(281): error C3861: 'glDeleteProgram': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(282): error C3861: 'glDeleteVertexArrays': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(283): error C3861: 'glDeleteBuffers': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(291): error C2065: 'GL_FRAMEBUFFER': identificador no declarado
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(291): error C3861: 'glBindFramebuffer': no se encontró el identificador
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(366): error C2589: '(': símbolo (token) no válido en el lado derecho de '::'
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp(366): error C2059: error de sintaxis: ')'
+error: command 'C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX86\\x64\\cl.exe' failed with exit code 2

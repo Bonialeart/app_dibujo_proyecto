@@ -1,0 +1,130 @@
+/*
+ * ArtFlow Studio - Modern Pro Style
+ * Inspired by Procreate & Adobe CC
+ */
+
+/* === GLOBAL === */
+* {
+    font-family: "Segoe UI", "Inter", sans-serif;
+    outline: none;
+}
+
+QWidget {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* === MAIN WINDOW === */
+QMainWindow {
+    background-color: #121212; /* Deep dark background */
+}
+
+/* === FLOATING PANELS / DOCKS === */
+QDockWidget {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 11pt;
+    border: none;
+}
+
+QDockWidget::title {
+    background: #252525;
+    padding: 8px 12px;
+    border-radius: 8px 8px 0 0;
+}
+
+QWidget#panelContainer {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+/* === BUTTONS (Premium Feel) === */
+QPushButton {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+QPushButton:hover {
+    background-color: #353535;
+    border-color: #505050;
+}
+
+QPushButton:pressed {
+    background-color: #0078d4; /* Accent Blue */
+    border-color: #0078d4;
+}
+
+/* Accent Button (Primary) */
+QPushButton#accentButton {
+    background-color: #0078d4;
+    border: none;
+}
+QPushButton#accentButton:hover {
+    background-color: #1084d9;
+}
+
+/* === INPUTS === */
+QLineEdit, QSpinBox, QDoubleSpinBox {
+    background-color: #181818;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 8px;
+    color: white;
+    font-size: 13px;
+}
+
+QLineEdit:focus, QSpinBox:focus {
+    border-color: #0078d4;
+    background-color: #202020;
+}
+
+/* === SLIDERS (Modern) === */
+QSlider::groove:horizontal {
+    background: #333;
+    height: 4px;
+    border-radius: 2px;
+}
+
+QSlider::handle:horizontal {
+    background: #e0e0e0;
+    width: 14px;
+    height: 14px;
+    margin: -5px 0;
+    border-radius: 7px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: #ffffff;
+    transform: scale(1.2);
+}
+
+QSlider::sub-page:horizontal {
+    background: #0078d4;
+    border-radius: 2px;
+}
+
+/* === SCROLLBARS (Minimal) === */
+QScrollBar:vertical {
+    background: transparent;
+    width: 8px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #444;
+    border-radius: 4px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #666;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}

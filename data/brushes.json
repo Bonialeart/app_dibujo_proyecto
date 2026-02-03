@@ -1,0 +1,191 @@
+{
+    "categories": {
+        "paint": {
+            "name": "Pintura",
+            "icon": "🎨",
+            "description": "Pinceles para pintura digital"
+        },
+        "sketch": {
+            "name": "Boceto",
+            "icon": "✏️",
+            "description": "Pinceles para bocetado y líneas"
+        },
+        "texture": {
+            "name": "Textura",
+            "icon": "🧱",
+            "description": "Pinceles con texturas especiales"
+        },
+        "watercolor": {
+            "name": "Acuarela",
+            "icon": "💧",
+            "description": "Simulación de acuarela tradicional"
+        },
+        "ink": {
+            "name": "Tinta",
+            "icon": "🖋️",
+            "description": "Pinceles de tinta y entintado"
+        },
+        "charcoal": {
+            "name": "Carboncillo",
+            "icon": "🪨",
+            "description": "Carboncillo y medios secos"
+        },
+        "special": {
+            "name": "Especiales",
+            "icon": "✨",
+            "description": "Efectos y pinceles únicos"
+        }
+    },
+    "brush_packs": [
+        {
+            "id": "charcoal_shaders",
+            "name": "Charcoal Shaders",
+            "category": "charcoal",
+            "description": "Pack de pinceles de carboncillo para sombreado realista",
+            "author": "ArtFlow Studio",
+            "brush_count": 15,
+            "file_size": "25MB",
+            "downloads": 15400,
+            "rating": 4.8,
+            "price": 0,
+            "preview_image": "previews/charcoal_shaders.jpg",
+            "download_url": "brushes/charcoal_shaders.abr",
+            "brushes": [
+                {
+                    "name": "Soft Charcoal",
+                    "size_range": "10-200px"
+                },
+                {
+                    "name": "Hard Charcoal",
+                    "size_range": "5-100px"
+                },
+                {
+                    "name": "Charcoal Dust",
+                    "size_range": "20-300px"
+                }
+            ]
+        },
+        {
+            "id": "watercolor_washes",
+            "name": "Watercolor Washes",
+            "category": "watercolor",
+            "description": "Pinceles de acuarela con bordes suaves y mezcla realista",
+            "author": "Loish",
+            "brush_count": 20,
+            "file_size": "32MB",
+            "downloads": 28000,
+            "rating": 4.9,
+            "price": 0,
+            "preview_image": "previews/watercolor_washes.jpg",
+            "download_url": "brushes/watercolor_washes.abr",
+            "brushes": [
+                {
+                    "name": "Wet Wash",
+                    "size_range": "20-400px"
+                },
+                {
+                    "name": "Dry Brush",
+                    "size_range": "10-200px"
+                },
+                {
+                    "name": "Splatter",
+                    "size_range": "50-500px"
+                }
+            ]
+        },
+        {
+            "id": "vexticre_pack",
+            "name": "Vexticre Pack",
+            "category": "paint",
+            "description": "Pack premium de pinceles para ilustración profesional",
+            "author": "Vex Art",
+            "brush_count": 45,
+            "file_size": "48MB",
+            "downloads": 8500,
+            "rating": 4.7,
+            "price": 9.99,
+            "preview_image": "previews/vexticre_pack.jpg",
+            "download_url": "premium/vexticre_pack.abr"
+        },
+        {
+            "id": "paint_mashes",
+            "name": "Paint Mashes",
+            "category": "paint",
+            "description": "Pinceles de óleo y acrílico con textura gruesa",
+            "author": "Marco Bucci",
+            "brush_count": 18,
+            "file_size": "22MB",
+            "downloads": 21000,
+            "rating": 4.8,
+            "price": 0,
+            "preview_image": "previews/paint_mashes.jpg",
+            "download_url": "brushes/paint_mashes.abr"
+        },
+        {
+            "id": "ink_masters",
+            "name": "Ink Masters",
+            "category": "ink",
+            "description": "Pinceles de tinta para cómic y manga",
+            "author": "Comic Studio",
+            "brush_count": 25,
+            "file_size": "18MB",
+            "downloads": 35000,
+            "rating": 4.9,
+            "price": 0,
+            "preview_image": "previews/ink_masters.jpg",
+            "download_url": "brushes/ink_masters.abr"
+        },
+        {
+            "id": "sketch_essentials",
+            "name": "Sketch Essentials",
+            "category": "sketch",
+            "description": "Lápices y herramientas esenciales para bocetado",
+            "author": "Proko",
+            "brush_count": 12,
+            "file_size": "15MB",
+            "downloads": 42000,
+            "rating": 4.9,
+            "price": 0,
+            "preview_image": "previews/sketch_essentials.jpg",
+            "download_url": "brushes/sketch_essentials.abr"
+        },
+        {
+            "id": "texture_pack_pro",
+            "name": "Texture Pack Pro",
+            "category": "texture",
+            "description": "Texturas de alta resolución para concept art",
+            "author": "FZD School",
+            "brush_count": 60,
+            "file_size": "85MB",
+            "downloads": 12000,
+            "rating": 4.6,
+            "price": 14.99,
+            "preview_image": "previews/texture_pack_pro.jpg",
+            "download_url": "premium/texture_pack_pro.abr"
+        },
+        {
+            "id": "anime_brush_set",
+            "name": "Anime Brush Set",
+            "category": "special",
+            "description": "Pinceles optimizados para estilo anime y manga",
+            "author": "Sakimichan",
+            "brush_count": 30,
+            "file_size": "28MB",
+            "downloads": 55000,
+            "rating": 4.9,
+            "price": 0,
+            "preview_image": "previews/anime_brush_set.jpg",
+            "download_url": "brushes/anime_brush_set.abr"
+        }
+    ],
+    "featured": [
+        "charcoal_shaders",
+        "watercolor_washes",
+        "ink_masters",
+        "anime_brush_set"
+    ],
+    "new_releases": [
+        "texture_pack_pro",
+        "vexticre_pack"
+    ]
+}

@@ -1,0 +1,11 @@
+E:\app_dibujo_proyecto\src\core\canvas\canvas.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\canvas.obj
+E:\app_dibujo_proyecto\src\core\canvas\renderer.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\renderer.obj
+E:\app_dibujo_proyecto\src\core\cpp\src\gl_utils.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\gl_utils.obj
+E:\app_dibujo_proyecto\src\core\cpp\src\stroke_renderer.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\stroke_renderer.obj
+E:\app_dibujo_proyecto\src\core\cpp\src\image_buffer.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\image_buffer.obj
+E:\app_dibujo_proyecto\src\core\cpp\src\brush_engine.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\brush_engine.obj
+E:\app_dibujo_proyecto\src\core\brushes\brush_stroke.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\brush_stroke.obj
+E:\app_dibujo_proyecto\src\core\brushes\abr_parser.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\abr_parser.obj
+E:\app_dibujo_proyecto\src\core\layers\layer.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\layer.obj
+E:\app_dibujo_proyecto\src\core\cpp\src\layer_manager.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\layer_manager.obj
+E:\app_dibujo_proyecto\src\core\cpp\src\color_utils.cpp;E:\app_dibujo_proyecto\build\artflow_core.dir\Release\color_utils.obj

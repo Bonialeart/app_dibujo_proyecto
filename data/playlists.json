@@ -1,0 +1,207 @@
+{
+  "categories": {
+    "illustration": {
+      "name": "Ilustración Digital",
+      "icon": "🎨",
+      "description": "Técnicas de ilustración digital profesional"
+    },
+    "concept_art": {
+      "name": "Arte Conceptual",
+      "icon": "🏛",
+      "description": "Diseño de ambientes, props y visualización de ideas"
+    },
+    "animation": {
+      "name": "Animación 2D",
+      "icon": "🎬",
+      "description": "Principios y técnicas de animación tradicional y digital"
+    },
+    "character_design": {
+      "name": "Diseño de Personajes",
+      "icon": "👤",
+      "description": "Creación y desarrollo de personajes"
+    },
+    "fundamentals": {
+      "name": "Fundamentos",
+      "icon": "📐",
+      "description": "Bases del dibujo: anatomía, perspectiva, color, composición"
+    }
+  },
+  "playlists": [
+    {
+      "id": "fundamentals_01",
+      "title": "Fundamentos del Dibujo - Curso Completo",
+      "category": "fundamentals",
+      "thumbnail": "thumbnails/fundamentals_01.jpg",
+      "video_count": 25,
+      "total_duration": "8h 30m",
+      "difficulty": "beginner",
+      "videos": [
+        {
+          "id": "v001",
+          "title": "Introducción: Cómo aprender a dibujar",
+          "duration": "12:30",
+          "youtube_id": "example_id_1"
+        },
+        {
+          "id": "v002",
+          "title": "Las formas básicas",
+          "duration": "18:45",
+          "youtube_id": "example_id_2"
+        },
+        {
+          "id": "v003",
+          "title": "Línea y trazo con confianza",
+          "duration": "15:20",
+          "youtube_id": "example_id_3"
+        }
+      ]
+    },
+    {
+      "id": "anatomy_01",
+      "title": "Anatomía Humana para Artistas",
+      "category": "fundamentals",
+      "thumbnail": "thumbnails/anatomy_01.jpg",
+      "video_count": 32,
+      "total_duration": "12h 15m",
+      "difficulty": "intermediate",
+      "videos": [
+        {
+          "id": "v010",
+          "title": "Proporciones del cuerpo humano",
+          "duration": "25:00",
+          "youtube_id": "example_id_10"
+        },
+        {
+          "id": "v011",
+          "title": "El gesto y la línea de acción",
+          "duration": "20:15",
+          "youtube_id": "example_id_11"
+        }
+      ]
+    },
+    {
+      "id": "concept_art_01",
+      "title": "Arte Conceptual para Videojuegos",
+      "category": "concept_art",
+      "thumbnail": "thumbnails/concept_art_01.jpg",
+      "video_count": 28,
+      "total_duration": "10h 45m",
+      "difficulty": "advanced",
+      "videos": [
+        {
+          "id": "v020",
+          "title": "Diseño de ambientes: Thumbnailing",
+          "duration": "35:00",
+          "youtube_id": "example_id_20"
+        },
+        {
+          "id": "v021",
+          "title": "Photobashing profesional",
+          "duration": "42:30",
+          "youtube_id": "example_id_21"
+        }
+      ]
+    },
+    {
+      "id": "animation_01",
+      "title": "Animación 2D desde Cero",
+      "category": "animation",
+      "thumbnail": "thumbnails/animation_01.jpg",
+      "video_count": 40,
+      "total_duration": "15h 00m",
+      "difficulty": "beginner",
+      "videos": [
+        {
+          "id": "v030",
+          "title": "Los 12 principios de la animación",
+          "duration": "45:00",
+          "youtube_id": "example_id_30"
+        },
+        {
+          "id": "v031",
+          "title": "Timing y spacing",
+          "duration": "28:15",
+          "youtube_id": "example_id_31"
+        }
+      ]
+    },
+    {
+      "id": "digital_painting_01",
+      "title": "Pintura Digital Avanzada",
+      "category": "illustration",
+      "thumbnail": "thumbnails/digital_01.jpg",
+      "video_count": 22,
+      "total_duration": "9h 30m",
+      "difficulty": "advanced",
+      "videos": [
+        {
+          "id": "v040",
+          "title": "Teoría del color para ilustradores",
+          "duration": "32:00",
+          "youtube_id": "example_id_40"
+        },
+        {
+          "id": "v041",
+          "title": "Iluminación cinematográfica",
+          "duration": "38:45",
+          "youtube_id": "example_id_41"
+        }
+      ]
+    },
+    {
+      "id": "character_design_01",
+      "title": "Diseño de Personajes Profesional",
+      "category": "character_design",
+      "thumbnail": "thumbnails/character_01.jpg",
+      "video_count": 18,
+      "total_duration": "7h 20m",
+      "difficulty": "intermediate",
+      "videos": [
+        {
+          "id": "v050",
+          "title": "Siluetas y lectura visual",
+          "duration": "24:00",
+          "youtube_id": "example_id_50"
+        },
+        {
+          "id": "v051",
+          "title": "Diseño de rostros expresivos",
+          "duration": "30:15",
+          "youtube_id": "example_id_51"
+        }
+      ]
+    }
+  ],
+  "featured_channels": [
+    {
+      "name": "Proko",
+      "youtube_id": "UCoqgcqgfPCcB2hm2ORe4FhQ",
+      "specialty": "Anatomía y fundamentos"
+    },
+    {
+      "name": "Marco Bucci",
+      "youtube_id": "UCsDxB-XKCQQ",
+      "specialty": "Color y luz"
+    },
+    {
+      "name": "Sinix Design",
+      "youtube_id": "UCUQTqWAaSzhAKRanOpes1nA",
+      "specialty": "Pintura digital"
+    },
+    {
+      "name": "FZD School",
+      "youtube_id": "UCbdyjrrJAjDIACjCsjAGFAA",
+      "specialty": "Arte conceptual"
+    },
+    {
+      "name": "Draw with Jazza",
+      "youtube_id": "UCHu2KNu6TtJ0p4hpSW7Yv7Q",
+      "specialty": "Entretenimiento educativo"
+    },
+    {
+      "name": "Ethan Becker",
+      "youtube_id": "UCWE_TualTjULIH3VIV6Pp1g",
+      "specialty": "Animación y humor"
+    }
+  ]
+}

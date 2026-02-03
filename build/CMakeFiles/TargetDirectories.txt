@@ -1,0 +1,7 @@
+D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir
+D:/app_dibujo_proyecto/build/CMakeFiles/artflow_engine.dir
+D:/app_dibujo_proyecto/build/CMakeFiles/edit_cache.dir
+D:/app_dibujo_proyecto/build/CMakeFiles/rebuild_cache.dir
+D:/app_dibujo_proyecto/build/CMakeFiles/list_install_components.dir
+D:/app_dibujo_proyecto/build/CMakeFiles/install.dir
+D:/app_dibujo_proyecto/build/CMakeFiles/install/local.dir

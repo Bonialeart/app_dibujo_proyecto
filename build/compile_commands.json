@@ -1,0 +1,74 @@
+[
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\canvas\\canvas.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\canvas\\canvas.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/canvas/canvas.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/canvas/canvas.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\canvas\\renderer.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\canvas\\renderer.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/canvas/renderer.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/canvas/renderer.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\cpp\\src\\gl_utils.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\cpp\\src\\gl_utils.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/cpp/src/gl_utils.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/cpp/src/gl_utils.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\cpp\\src\\stroke_renderer.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\cpp\\src\\stroke_renderer.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/cpp/src/stroke_renderer.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/cpp/src/stroke_renderer.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\cpp\\src\\image_buffer.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\cpp\\src\\image_buffer.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/cpp/src/image_buffer.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/cpp/src/image_buffer.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\cpp\\src\\brush_engine.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\cpp\\src\\brush_engine.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/cpp/src/brush_engine.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/cpp/src/brush_engine.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\brushes\\brush_stroke.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\brushes\\brush_stroke.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/brushes/brush_stroke.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/brushes/brush_stroke.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\brushes\\abr_parser.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\brushes\\abr_parser.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/brushes/abr_parser.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/brushes/abr_parser.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\layers\\layer.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\layers\\layer.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/layers/layer.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/layers/layer.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\cpp\\src\\layer_manager.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\cpp\\src\\layer_manager.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/cpp/src/layer_manager.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/cpp/src/layer_manager.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\artflow_core.dir\\cpp\\src\\color_utils.cpp.obj /FdCMakeFiles\\artflow_core.dir\\artflow_core.pdb /FS -c D:\\app_dibujo_proyecto\\src\\core\\cpp\\src\\color_utils.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/cpp/src/color_utils.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_core.dir/cpp/src/color_utils.cpp.obj"
+},
+{
+  "directory": "D:/app_dibujo_proyecto/build",
+  "command": "C:\\PROGRA~2\\MICROS~2\\18\\BUILDT~1\\VC\\Tools\\MSVC\\1450~1.357\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DPy_NO_LINK_LIB -Dartflow_engine_EXPORTS -ID:\\app_dibujo_proyecto\\src\\core -ID:\\app_dibujo_proyecto\\src\\core\\cpp\\include -ID:\\app_dibujo_proyecto\\src\\core\\canvas -ID:\\app_dibujo_proyecto\\src\\core\\brushes -ID:\\app_dibujo_proyecto\\src\\core\\layers -external:IC:\\Users\\alejandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\Include -external:IC:\\Users\\alejandro\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\pybind11\\include -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /bigobj /FoCMakeFiles\\artflow_engine.dir\\bindings\\python_bindings.cpp.obj /FdCMakeFiles\\artflow_engine.dir\\ /FS -c D:\\app_dibujo_proyecto\\src\\core\\bindings\\python_bindings.cpp",
+  "file": "D:/app_dibujo_proyecto/src/core/bindings/python_bindings.cpp",
+  "output": "D:/app_dibujo_proyecto/build/CMakeFiles/artflow_engine.dir/bindings/python_bindings.cpp.obj"
+}
+]

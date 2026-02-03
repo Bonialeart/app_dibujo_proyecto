@@ -1,0 +1,249 @@
+{
+    "categories": {
+        "practice": {
+            "name": "Práctica",
+            "icon": "🏋️",
+            "description": "Sitios para practicar dibujo"
+        },
+        "reference": {
+            "name": "Referencia",
+            "icon": "📷",
+            "description": "Imágenes de referencia"
+        },
+        "tools": {
+            "name": "Herramientas",
+            "icon": "🔧",
+            "description": "Software y utilidades"
+        },
+        "learning": {
+            "name": "Aprendizaje",
+            "icon": "📚",
+            "description": "Tutoriales y cursos"
+        },
+        "color": {
+            "name": "Color",
+            "icon": "🎨",
+            "description": "Paletas y teoría del color"
+        },
+        "community": {
+            "name": "Comunidad",
+            "icon": "👥",
+            "description": "Foros y redes sociales"
+        },
+        "portfolio": {
+            "name": "Portfolio",
+            "icon": "💼",
+            "description": "Plataformas de showcase"
+        }
+    },
+    "resources": [
+        {
+            "id": "quickposes",
+            "title": "Quickposes",
+            "description": "Generador de poses con temporizador para práctica de gesture drawing. Ideal para calentamiento diario.",
+            "url": "https://quickposes.com",
+            "category": "practice",
+            "icon": "🏃",
+            "featured": true
+        },
+        {
+            "id": "line_of_action",
+            "title": "Line of Action",
+            "description": "Herramienta de práctica de dibujo con fotos de modelos, animales y expresiones faciales.",
+            "url": "https://line-of-action.com",
+            "category": "practice",
+            "icon": "📐"
+        },
+        {
+            "id": "sketchdaily",
+            "title": "SketchDaily Reference",
+            "description": "Referencias gratuitas de alta calidad para práctica de dibujo.",
+            "url": "http://reference.sketchdaily.net",
+            "category": "reference",
+            "icon": "🖼️"
+        },
+        {
+            "id": "pureref",
+            "title": "PureRef",
+            "description": "Aplicación gratuita para organizar imágenes de referencia mientras dibujas.",
+            "url": "https://pureref.com",
+            "category": "tools",
+            "icon": "📌",
+            "featured": true
+        },
+        {
+            "id": "colorhunt",
+            "title": "Color Hunt",
+            "description": "Paletas de colores curadas y votadas por la comunidad de diseñadores.",
+            "url": "https://colorhunt.co",
+            "category": "color",
+            "icon": "🎨",
+            "featured": true
+        },
+        {
+            "id": "coolors",
+            "title": "Coolors",
+            "description": "Generador de paletas de colores con herramientas de exploración y exportación.",
+            "url": "https://coolors.co",
+            "category": "color",
+            "icon": "🌈"
+        },
+        {
+            "id": "adobe_color",
+            "title": "Adobe Color",
+            "description": "Rueda de color interactiva y explorador de tendencias de color.",
+            "url": "https://color.adobe.com",
+            "category": "color",
+            "icon": "🔴"
+        },
+        {
+            "id": "sketchfab",
+            "title": "Sketchfab",
+            "description": "Modelos 3D gratuitos para usar como referencia de ángulos y poses.",
+            "url": "https://sketchfab.com",
+            "category": "reference",
+            "icon": "🎭",
+            "featured": true
+        },
+        {
+            "id": "artstation",
+            "title": "ArtStation",
+            "description": "La plataforma de portfolio más popular para artistas digitales.",
+            "url": "https://artstation.com",
+            "category": "portfolio",
+            "icon": "💼",
+            "featured": true
+        },
+        {
+            "id": "behance",
+            "title": "Behance",
+            "description": "Plataforma de Adobe para showcase de proyectos creativos.",
+            "url": "https://behance.net",
+            "category": "portfolio",
+            "icon": "📁"
+        },
+        {
+            "id": "pinterest",
+            "title": "Pinterest",
+            "description": "Tableros de inspiración y referencias visuales organizadas.",
+            "url": "https://pinterest.com",
+            "category": "reference",
+            "icon": "📌"
+        },
+        {
+            "id": "drawabox",
+            "title": "Drawabox",
+            "description": "Curso gratuito de fundamentos del dibujo con ejercicios estructurados.",
+            "url": "https://drawabox.com",
+            "category": "learning",
+            "icon": "📦"
+        },
+        {
+            "id": "ctrlpaint",
+            "title": "Ctrl+Paint",
+            "description": "Biblioteca de videos gratuitos sobre pintura digital y fundamentos.",
+            "url": "https://ctrlpaint.com",
+            "category": "learning",
+            "icon": "🎬"
+        },
+        {
+            "id": "proko",
+            "title": "Proko",
+            "description": "Cursos premium de anatomía y figura humana con videos gratuitos.",
+            "url": "https://proko.com",
+            "category": "learning",
+            "icon": "🦴"
+        },
+        {
+            "id": "figma",
+            "title": "Figma",
+            "description": "Herramienta de diseño colaborativo útil para UI y concept art.",
+            "url": "https://figma.com",
+            "category": "tools",
+            "icon": "🎨"
+        },
+        {
+            "id": "photopea",
+            "title": "Photopea",
+            "description": "Editor de imágenes online gratuito compatible con PSD.",
+            "url": "https://photopea.com",
+            "category": "tools",
+            "icon": "🖥️"
+        }
+    ],
+    "artists_of_the_week": [
+        {
+            "id": "artist_01",
+            "name": "Sakimichan",
+            "handle": "@sakimichan",
+            "avatar": "avatars/sakimichan.jpg",
+            "featured_work": "featured/sakimichan_01.jpg",
+            "style": [
+                "Digital Painting",
+                "Fantasy",
+                "Character Art"
+            ],
+            "bio": "Artista digital conocida mundialmente por sus retratos estilizados, técnicas de iluminación cinematográfica y fanarts de alta calidad.",
+            "social": {
+                "twitter": "https://twitter.com/sakaboruto",
+                "instagram": "https://instagram.com/sakimichanart",
+                "artstation": "https://sakimichan.artstation.com",
+                "patreon": "https://patreon.com/sakimichan"
+            }
+        },
+        {
+            "id": "artist_02",
+            "name": "Ross Tran",
+            "handle": "@rossdraws",
+            "avatar": "avatars/ross_tran.jpg",
+            "featured_work": "featured/ross_tran_01.jpg",
+            "style": [
+                "Illustration",
+                "Character Design",
+                "YouTube Education"
+            ],
+            "bio": "Ilustrador y educador que combina arte tradicional con digital, conocido por su canal de YouTube con millones de seguidores.",
+            "social": {
+                "twitter": "https://twitter.com/rossdraws",
+                "instagram": "https://instagram.com/rossdraws",
+                "youtube": "https://youtube.com/rossdraws"
+            }
+        },
+        {
+            "id": "artist_03",
+            "name": "Loish",
+            "handle": "@loikitten",
+            "avatar": "avatars/loish.jpg",
+            "featured_work": "featured/loish_01.jpg",
+            "style": [
+                "Character Design",
+                "Stylized Art",
+                "Book Illustration"
+            ],
+            "bio": "Artista holandesa reconocida por su estilo único de cabello fluido y paletas de colores vibrantes.",
+            "social": {
+                "twitter": "https://twitter.com/loikitten",
+                "instagram": "https://instagram.com/loisvb"
+            }
+        },
+        {
+            "id": "artist_04",
+            "name": "WLOP",
+            "handle": "@wlop",
+            "avatar": "avatars/wlop.jpg",
+            "featured_work": "featured/wlop_01.jpg",
+            "style": [
+                "Fantasy Art",
+                "Digital Painting",
+                "Webcomic"
+            ],
+            "bio": "Artista chino creador del webcomic 'GhostBlade', conocido por sus pinturas digitales etéreas y atmósferas mágicas.",
+            "social": {
+                "twitter": "https://twitter.com/wlopp",
+                "deviantart": "https://wlop.deviantart.com",
+                "patreon": "https://patreon.com/wlop"
+            }
+        }
+    ],
+    "current_artist_of_week": "artist_01"
+}
