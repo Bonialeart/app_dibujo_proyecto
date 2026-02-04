@@ -168,8 +168,8 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
-    void tabletEvent(QTabletEvent *event) override;
     void hoverMoveEvent(QHoverEvent *event) override;
+    bool event(QEvent *event) override;
 
 private:
     artflow::BrushEngine *m_brushEngine;

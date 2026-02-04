@@ -108,21 +108,26 @@ void ImageBuffer::drawCircle(int cx, int cy, float radius,
                     falloff = std::clamp(falloff, 0.0f, 1.0f);
                 }
 
-                // Grain (Noise) logic - Coarser grain for organic look
+                // Grain (Noise) logic - Multi-octave organic texture
                 float noise = 1.0f;
                 if (grain > 0.001f) {
-                    // Scale coordinates down to make grain "larger" and more organic
-                    float gx = px / 2.5f;
-                    float gy = py / 2.5f;
-                    uint32_t hash = (static_cast<uint32_t>(gx) * 1597334677U) ^ (static_cast<uint32_t>(gy) * 3812015801U);
-                    hash *= 0x85ebca6b;
-                    hash ^= hash >> 13;
-                    hash *= 0xc2b2ae35;
-                    float randVal = static_cast<float>(hash & 0xFFFF) / 65535.0f;
+                    auto getHash = [](float x, float y) {
+                        uint32_t h = (static_cast<uint32_t>(x) * 1597334677U) ^ (static_cast<uint32_t>(y) * 3812015801U);
+                        h *= 0x85ebca6b; h ^= h >> 13; h *= 0xc2b2ae35;
+                        return static_cast<float>(h & 0xFFFF) / 65535.0f;
+                    };
+
+                    // Octave 1: Coarse (Paper grain)
+                    float n1 = getHash(px / 4.0f, py / 4.0f);
+                    // Octave 2: Fine (Pigment/Graphite detail)
+                    float n2 = getHash(px / 1.5f, py / 1.5f);
                     
-                    // Contrast the grain like in the Python version
-                    float grainVal = (randVal - 0.4f) * 2.0f + 0.5f;
+                    float randVal = n1 * 0.7f + n2 * 0.3f;
+                    
+                    // High-contrast curve for "tooth" feeling
+                    float grainVal = (randVal - 0.45f) * 3.0f + 0.5f;
                     grainVal = std::clamp(grainVal, 0.0f, 1.0f);
+                    
                     noise = (1.0f - grain) + (grainVal * grain);
                 }
                 

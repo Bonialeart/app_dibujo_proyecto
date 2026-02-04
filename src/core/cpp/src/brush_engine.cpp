@@ -55,16 +55,22 @@ void BrushEngine::endStroke() {
 float BrushEngine::calculateDabSize(float pressure) const {
     float baseSize = m_brush.size;
     
-    // Pressure dynamics
+    // Pressure dynamics based on Brush Type
     if (m_brush.sizeByPressure) {
-        baseSize *= (0.2f + 0.8f * pressure);
+        if (m_brush.type == BrushSettings::Type::Ink) {
+            // High-dynamic taper for Inking (G-Pen style)
+            // Use power curve: pressure^1.5 creates sharper thin ends
+            baseSize *= std::pow(pressure, 1.5f);
+        } else if (m_brush.type == BrushSettings::Type::Pencil) {
+            // Pencils have a minimum "lead" thickness (0.3 + 0.7*P)
+            baseSize *= (0.3f + 0.7f * pressure);
+        } else {
+            // Standard linear-ish dynamics
+            baseSize *= (0.2f + 0.8f * pressure);
+        }
     }
     
-    // Velocity dynamics (Simulated - in a real engine we'd compute delta time)
-    // For now we'll assume pressure might drop slightly when fast or use a stored velocity if we tracked it.
-    // Let's add a simple placeholder for velocity-based size in the caller or interpolate.
-    
-    return baseSize;
+    return std::max(0.5f, baseSize);
 }
 
 float BrushEngine::calculateDabOpacity(float pressure) const {
@@ -117,13 +123,33 @@ void BrushEngine::renderDab(ImageBuffer& target, float x, float y, float pressur
                         opacity);
     }
     else {
+        // PER-TYPE DYNAMICS
+        float hardness = m_brush.hardness;
+        float grain = m_brush.grain;
+        float jitter = 0.0f;
+
+        if (m_brush.type == BrushSettings::Type::Pencil) {
+            // Pencils have more jitter and sharp grain
+            jitter = 0.15f;
+            hardness = std::min(hardness, 0.4f);
+        } else if (m_brush.type == BrushSettings::Type::Watercolor) {
+            jitter = 0.05f;
+            hardness = 0.1f;
+        }
+
+        if (jitter > 0.001f) {
+            float offset = size * jitter;
+            x += (static_cast<float>(rand()) / RAND_MAX - 0.5f) * offset;
+            y += (static_cast<float>(rand()) / RAND_MAX - 0.5f) * offset;
+        }
+
         // Professional Shader-like Dab with grain and hardness
         target.drawCircle(
             static_cast<int>(x), static_cast<int>(y), size / 2.0f,
             finalColor.r, finalColor.g, finalColor.b, 
             static_cast<uint8_t>(opacity * 255),
-            m_brush.hardness,
-            m_brush.grain,
+            hardness,
+            grain,
             alphaLock,
             false, // isEraser
             mask
@@ -155,9 +181,9 @@ std::vector<StrokePoint> BrushEngine::interpolatePoints(const StrokePoint& from,
     float dy = pTo.y - from.y;
     float distance = std::sqrt(dx * dx + dy * dy);
     
-    // Spacing based on brush size - Use a tighter default for C++ engine smoothness
+    // Spacing based on brush size
     float spacingRatio = std::max(0.01f, m_brush.spacing); 
-    float spacing = std::max(0.25f, (m_brush.size * spacingRatio) * 0.5f); // Half the spacing for C++ smoothness
+    float spacing = std::max(0.25f, (m_brush.size * spacingRatio)); // Revert to standard spacing for texture
     int steps = static_cast<int>(distance / spacing);
     
     if (steps < 1) {

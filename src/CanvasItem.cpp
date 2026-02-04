@@ -13,6 +13,7 @@
 #include <QUrl>
 #include <QFileInfo>
 #include <QGuiApplication>
+#include <QCursor>
 #include <QKeyEvent>
 #include <QTabletEvent>
 #include <QSvgRenderer>
@@ -266,7 +267,7 @@ void CanvasItem::handle_shortcuts(int key, int modifiers) {
     }
     // Space (Pan)
     else if (key == Qt::Key_Space) {
-        QGuiApplication::setOverrideCursor(Qt::OpenHandCursor);
+        QGuiApplication::setOverrideCursor(QCursor(Qt::OpenHandCursor));
     }
     // Tool Switches
     else if (key == Qt::Key_B) setCurrentTool("brush");
@@ -570,42 +571,62 @@ void CanvasItem::usePreset(const QString &name) {
     s.jitter = 0.0f;
     s.spacing = 0.1f;
     s.hardness = 0.8f;
+    s.grain = 0.0f; // Reset grain
+    s.opacityByPressure = false; // Reset pressure settings
+    s.sizeByPressure = false;
 
     if (name == "Pencil HB") {
-        setBrushSize(4); setBrushOpacity(0.5f); setBrushHardness(0.1f); setBrushSpacing(0.05f);
+        setBrushSize(4); setBrushOpacity(0.5f); setBrushHardness(0.1f); setBrushSpacing(0.05f); setBrushStabilization(0.2f);
         s.type = BrushSettings::Type::Pencil;
         s.grain = 0.6f;
+        s.opacityByPressure = true;
     } else if (name == "Pencil 6B") {
-        setBrushSize(15); setBrushOpacity(0.85f); setBrushHardness(0.4f); setBrushSpacing(0.05f);
+        setBrushSize(15); setBrushOpacity(0.85f); setBrushHardness(0.4f); setBrushSpacing(0.05f); setBrushStabilization(0.1f);
         s.type = BrushSettings::Type::Pencil;
         s.grain = 0.9f;
+        s.opacityByPressure = true;
+    } else if (name == "Mechanical") {
+        setBrushSize(2); setBrushOpacity(0.8f); setBrushHardness(0.81f); setBrushSpacing(0.05f); setBrushStabilization(0.4f);
+        s.type = BrushSettings::Type::Pencil;
+        s.grain = 0.2f;
+        s.opacityByPressure = true;
     } else if (name == "Ink Pen") {
-        setBrushSize(12); setBrushOpacity(1.0f); setBrushHardness(1.0f); setBrushSpacing(0.02f);
+        setBrushSize(12); setBrushOpacity(1.0f); setBrushHardness(1.0f); setBrushSpacing(0.02f); setBrushStabilization(0.7f);
         s.type = BrushSettings::Type::Ink;
+        s.sizeByPressure = true;
     } else if (name == "G-Pen") {
-        setBrushSize(15); setBrushOpacity(1.0f); setBrushHardness(0.98f); setBrushSpacing(0.02f);
+        setBrushSize(15); setBrushOpacity(1.0f); setBrushHardness(0.98f); setBrushSpacing(0.02f); setBrushStabilization(0.7f);
         s.type = BrushSettings::Type::Ink;
+        s.sizeByPressure = true;
+    } else if (name == "Maru Pen") {
+        setBrushSize(8); setBrushOpacity(1.0f); setBrushHardness(1.0f); setBrushSpacing(0.02f); setBrushStabilization(0.5f);
+        s.type = BrushSettings::Type::Ink;
+        s.sizeByPressure = true;
     } else if (name == "Watercolor") {
-        setBrushSize(45); setBrushOpacity(0.35f); setBrushHardness(0.25f); setBrushSpacing(0.1f);
+        setBrushSize(45); setBrushOpacity(0.35f); setBrushHardness(0.25f); setBrushSpacing(0.1f); setBrushStabilization(0.4f);
         s.type = BrushSettings::Type::Watercolor;
         s.wetness = 0.4f;
+        s.grain = 0.05f;
     } else if (name == "Watercolor Wet") {
-        setBrushSize(55); setBrushOpacity(0.3f); setBrushHardness(0.1f); setBrushSpacing(0.1f);
+        setBrushSize(55); setBrushOpacity(0.3f); setBrushHardness(0.1f); setBrushSpacing(0.1f); setBrushStabilization(0.5f);
         s.type = BrushSettings::Type::Watercolor;
         s.wetness = 0.9f;
     } else if (name == "Oil Paint") {
-        setBrushSize(35); setBrushOpacity(1.0f); setBrushHardness(0.8f); setBrushSpacing(0.02f);
+        setBrushSize(35); setBrushOpacity(1.0f); setBrushHardness(0.8f); setBrushSpacing(0.02f); setBrushStabilization(0.3f);
         s.type = BrushSettings::Type::Oil;
         s.smudge = 0.8f;
+        s.grain = 0.5f;
     } else if (name == "Acrylic") {
-        setBrushSize(35); setBrushOpacity(0.95f); setBrushHardness(0.9f); setBrushSpacing(0.02f);
+        setBrushSize(35); setBrushOpacity(0.95f); setBrushHardness(0.9f); setBrushSpacing(0.02f); setBrushStabilization(0.2f);
         s.type = BrushSettings::Type::Oil;
         s.smudge = 0.6f;
-    } else if (name == "Soft") {
-        setBrushSize(60); setBrushOpacity(0.15f); setBrushHardness(0.0f);
+        s.grain = 0.5f;
+    }
+ else if (name == "Soft") {
+        setBrushSize(80); setBrushOpacity(0.15f); setBrushHardness(0.01f); setBrushSpacing(0.1f);
         s.type = BrushSettings::Type::Airbrush;
     } else if (name == "Hard") {
-        setBrushSize(40); setBrushOpacity(0.2f); setBrushHardness(0.85f);
+        setBrushSize(40); setBrushOpacity(0.2f); setBrushHardness(0.85f); setBrushSpacing(0.05f);
         s.type = BrushSettings::Type::Airbrush;
     } else if (name == "Eraser Soft") {
         setBrushSize(40); setBrushOpacity(1.0f); setBrushHardness(0.2f);
@@ -663,8 +684,20 @@ void CanvasItem::mousePressEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton) {
         m_isDrawing = true;
         QPointF p = (event->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
+        m_lastPos = p; // FIX: Initialize last point
         m_brushEngine->beginStroke(StrokePoint(p.x(), p.y(), 1.0f));
-        processDrawing(p, 1.0f);
+        
+        // Render first dab
+        Layer* layer = m_layerManager->getActiveLayer();
+        if (layer) {
+            ImageBuffer* mask = nullptr;
+            if (layer->clipped && m_activeLayerIndex > 0) {
+                Layer* parent = m_layerManager->getLayer(m_activeLayerIndex - 1);
+                if (parent) mask = parent->buffer.get();
+            }
+            m_brushEngine->renderDab(*(layer->buffer), p.x(), p.y(), 1.0f, layer->alphaLock, mask);
+            update();
+        }
     }
 }
 
@@ -678,22 +711,37 @@ void CanvasItem::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-void CanvasItem::tabletEvent(QTabletEvent *event) {
-    QPointF p = (event->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
-    float pressure = event->pressure();
-    
-    if (event->type() == QEvent::TabletPress) {
-        m_isDrawing = true;
-        m_brushEngine->beginStroke(StrokePoint(p.x(), p.y(), pressure));
-        processDrawing(p, pressure);
-    } else if (event->type() == QEvent::TabletMove && m_isDrawing) {
-        processDrawing(p, pressure);
-    } else if (event->type() == QEvent::TabletRelease) {
-        m_isDrawing = false;
-        m_brushEngine->endStroke();
-        capture_timelapse_frame();
+bool CanvasItem::event(QEvent *event) {
+    if (event->type() == QEvent::TabletPress || event->type() == QEvent::TabletMove || event->type() == QEvent::TabletRelease) {
+        QTabletEvent *tablet = static_cast<QTabletEvent *>(event);
+        QPointF p = (tablet->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
+        float pressure = tablet->pressure();
+
+        if (event->type() == QEvent::TabletPress) {
+            m_isDrawing = true;
+            m_lastPos = p; // FIX: Initialize last point
+            m_brushEngine->beginStroke(StrokePoint(p.x(), p.y(), pressure));
+            
+            Layer* layer = m_layerManager->getActiveLayer();
+            if (layer) {
+                ImageBuffer* mask = nullptr;
+                if (layer->clipped && m_activeLayerIndex > 0) {
+                    Layer* parent = m_layerManager->getLayer(m_activeLayerIndex - 1);
+                    if (parent) mask = parent->buffer.get();
+                }
+                m_brushEngine->renderDab(*(layer->buffer), p.x(), p.y(), pressure, layer->alphaLock, mask);
+                update();
+            }
+        } else if (event->type() == QEvent::TabletMove && m_isDrawing) {
+            processDrawing(p, pressure);
+        } else if (event->type() == QEvent::TabletRelease) {
+            m_isDrawing = false;
+            m_brushEngine->endStroke();
+            capture_timelapse_frame();
+        }
+        return true;
     }
-    event->accept();
+    return QQuickPaintedItem::event(event);
 }
 
 void CanvasItem::processDrawing(const QPointF &pos, float pressure) {
