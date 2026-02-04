@@ -62,6 +62,7 @@ void LayerManager::duplicateLayer(int index) {
     newLayer->visible = src->visible;
     newLayer->alphaLock = src->alphaLock;
     newLayer->clipped = src->clipped;
+    newLayer->isPrivate = src->isPrivate;
     newLayer->type = src->type;
     
     m_layers.insert(m_layers.begin() + index + 1, std::move(newLayer));
@@ -140,12 +141,13 @@ void LayerManager::sampleColor(int x, int y, uint8_t* r, uint8_t* g, uint8_t* b,
     *r = *g = *b = *a = 0;
 }
 
-void LayerManager::compositeAll(ImageBuffer& output) const {
+void LayerManager::compositeAll(ImageBuffer& output, bool skipPrivate) const {
     output.clear();
     
     // Composite from bottom to top
     for (const auto& layer : m_layers) {
         if (layer->visible) {
+            if (skipPrivate && layer->isPrivate) continue;
             output.composite(*layer->buffer, 0, 0, layer->opacity);
         }
     }

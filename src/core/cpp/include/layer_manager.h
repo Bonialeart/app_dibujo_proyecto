@@ -45,6 +45,7 @@ struct Layer {
     bool locked = false;
     bool alphaLock = false;
     bool clipped = false;
+    bool isPrivate = false;
     Type type = Type::Drawing;
     
     Layer(const std::string& name, int width, int height, Type type = Type::Drawing);
@@ -79,7 +80,7 @@ public:
     Layer* getActiveLayer();
     
     // Composite all visible layers
-    void compositeAll(ImageBuffer& output) const;
+    void compositeAll(ImageBuffer& output, bool skipPrivate = false) const;
     
     // Canvas dimensions
     int width() const { return m_width; }

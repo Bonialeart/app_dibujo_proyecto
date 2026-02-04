@@ -190,7 +190,7 @@ void CanvasItem::setCurrentTool(const QString &tool) { m_currentTool = tool; emi
 
 void CanvasItem::loadRecentProjectsAsync()
 {
-    QtConcurrent::run([this]() {
+    (void)QtConcurrent::run([this]() {
         QVariantList results = this->_scanSync();
         emit projectsLoaded(results);
     });
@@ -343,6 +343,7 @@ void CanvasItem::updateLayersList() {
     layer["locked"] = l->locked;
     layer["alpha_lock"] = l->alphaLock;
     layer["clipped"] = l->clipped;
+    layer["is_private"] = l->isPrivate;
     layer["active"] = (i == m_activeLayerIndex);
     layer["type"] = (i == 0) ? "background" : "drawing"; 
     layer["thumbnail"] = ""; 
@@ -449,6 +450,15 @@ void CanvasItem::setActiveLayer(int index) {
         m_activeLayerIndex = index;
         m_layerManager->setActiveLayer(index);
         emit activeLayerChanged();
+        updateLayersList();
+    }
+}
+
+void CanvasItem::setLayerPrivate(int index, bool isPrivate) {
+    Layer* l = m_layerManager->getLayer(index);
+    if (l) {
+        l->isPrivate = isPrivate;
+        updateLayersList();
     }
 }
 
@@ -546,8 +556,8 @@ void CanvasItem::usePreset(const QString &name) {
 }
 
 QString CanvasItem::get_brush_preview(const QString &brushName) {
-    QImage img(220, 100, QImage::Format_Alpha8);
-    img.fill(0);
+    QImage img(220, 100, QImage::Format_ARGB32);
+    img.fill(Qt::transparent);
     
     QPainter painter(&img);
     painter.setRenderHint(QPainter::Antialiasing);
@@ -579,7 +589,7 @@ void CanvasItem::capture_timelapse_frame() {
     QString fileName = QString("%1/frame_%2.jpg").arg(path).arg(frameCount++, 6, 10, QChar('0'));
     
     ImageBuffer composite(m_canvasWidth, m_canvasHeight);
-    m_layerManager->compositeAll(composite);
+    m_layerManager->compositeAll(composite, true); // skipPrivate = true
     
     QImage img(composite.data(), m_canvasWidth, m_canvasHeight, QImage::Format_RGBA8888);
     img.save(fileName, "JPG", 85);

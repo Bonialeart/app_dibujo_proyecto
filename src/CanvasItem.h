@@ -110,6 +110,7 @@ public:
     Q_INVOKABLE void clearLayer(int index);
     Q_INVOKABLE void setLayerOpacity(int index, float opacity);
     Q_INVOKABLE void setLayerBlendMode(int index, const QString &mode);
+    Q_INVOKABLE void setLayerPrivate(int index, bool isPrivate);
     Q_INVOKABLE void setActiveLayer(int index);
 
     // Color Utilities (HCL support for Pro Sliders)
