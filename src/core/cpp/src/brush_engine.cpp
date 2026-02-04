@@ -89,7 +89,8 @@ void BrushEngine::renderDab(ImageBuffer& target, float x, float y, float pressur
     // 2. ERASER MODE
     if (m_brush.type == BrushSettings::Type::Eraser) {
         target.drawCircle(static_cast<int>(x), static_cast<int>(y), size / 2.0f,
-                         0, 0, 0, 0, m_brush.hardness, 0.0f, alphaLock, mask);
+                         0, 0, 0, static_cast<uint8_t>(opacity * 255), 
+                         m_brush.hardness, 0.0f, alphaLock, true, mask);
         return;
     }
 
@@ -124,6 +125,7 @@ void BrushEngine::renderDab(ImageBuffer& target, float x, float y, float pressur
             m_brush.hardness,
             m_brush.grain,
             alphaLock,
+            false, // isEraser
             mask
         );
     }

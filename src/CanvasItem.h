@@ -168,6 +168,7 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void tabletEvent(QTabletEvent *event) override;
     void hoverMoveEvent(QHoverEvent *event) override;
 
 private:
@@ -207,6 +208,7 @@ private:
     QVariantList _scanSync();
     void updateLayersList();
     void capture_timelapse_frame();
+    void processDrawing(const QPointF &pos, float pressure);
 };
 
 #endif // CANVASITEM_H

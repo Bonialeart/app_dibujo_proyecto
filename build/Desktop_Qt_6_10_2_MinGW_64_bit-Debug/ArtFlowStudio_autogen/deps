@@ -790,6 +790,14 @@ ArtFlowStudio_autogen/timestamp: \
 	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets-relwithdebinfo.cmake \
 	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets.cmake \
 	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsVersionlessTargets.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgAdditionalTargetInfo.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgConfig.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersionImpl.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgDependencies.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgTargets-relwithdebinfo.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgTargets.cmake \
+	C:/Qt/6.10.2/mingw_64/lib/cmake/Qt6Svg/Qt6SvgVersionlessAliasTargets.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake \

@@ -40,13 +40,13 @@ public:
     
     // Blend a color onto pixel with alpha blending. Optional alphaLock restricts
     // painting to areas that already have some alpha.
-    void blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint8_t a, bool alphaLock = false);
+    void blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint8_t a, bool alphaLock = false, bool isEraser = false);
     
     // Draw a filled circle (for brush dabs)
     void drawCircle(int cx, int cy, float radius, 
                     uint8_t r, uint8_t g, uint8_t b, uint8_t a,
                     float hardness = 1.0f, float grain = 0.0f, 
-                    bool alphaLock = false, const ImageBuffer* mask = nullptr);
+                    bool alphaLock = false, bool isEraser = false, const ImageBuffer* mask = nullptr);
     
     // Copy from another buffer
     void copyFrom(const ImageBuffer& other);

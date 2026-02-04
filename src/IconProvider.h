@@ -6,6 +6,8 @@
 #include <QPainter>
 #include <QDir>
 #include <QCoreApplication>
+#include <QSvgRenderer>
+#include <QFile>
 
 class IconProvider : public QQuickImageProvider
 {
@@ -14,27 +16,38 @@ public:
 
     QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize) override
     {
-        QString path = QCoreApplication::applicationDirPath() + "/assets/icons/" + id;
+        QString fileName = id;
+        if (!fileName.endsWith(".svg") && !fileName.endsWith(".png")) {
+            fileName += ".svg";
+        }
+
+        QString path = QCoreApplication::applicationDirPath() + "/assets/icons/" + fileName;
         if (!QFile::exists(path)) {
-            // Try relative to source dir if building locally
-            path = "d:/app_dibujo_proyecto/assets/icons/" + id;
+            path = "d:/app_dibujo_proyecto/assets/icons/" + fileName;
         }
         if (!QFile::exists(path)) {
-            path = "assets/icons/" + id;
+            path = "assets/icons/" + fileName;
         }
         
-        QPixmap pixmap;
+        int w = requestedSize.width() > 0 ? requestedSize.width() : 64;
+        int h = requestedSize.height() > 0 ? requestedSize.height() : 64;
+        QPixmap pixmap(w, h);
+        pixmap.fill(Qt::transparent);
+
         if (QFile::exists(path)) {
-            pixmap.load(path);
+            if (path.endsWith(".svg")) {
+                QSvgRenderer renderer(path);
+                QPainter painter(&pixmap);
+                renderer.render(&painter);
+            } else {
+                pixmap.load(path);
+            }
         } else {
-            // Fallback: draw a basic icon
-            pixmap = QPixmap(requestedSize.width() > 0 ? requestedSize.width() : 64, 
-                             requestedSize.height() > 0 ? requestedSize.height() : 64);
-            pixmap.fill(Qt::transparent);
+            // Fallback: draw a basic circle or placeholder
             QPainter painter(&pixmap);
             painter.setRenderHint(QPainter::Antialiasing);
-            painter.setPen(Qt::white);
-            painter.drawRect(2, 2, pixmap.width()-4, pixmap.height()-4);
+            painter.setPen(QPen(Qt::white, 1));
+            painter.drawEllipse(w/4, h/4, w/2, h/2);
         }
 
         if (size) *size = pixmap.size();

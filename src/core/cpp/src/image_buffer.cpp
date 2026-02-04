@@ -47,7 +47,7 @@ void ImageBuffer::clear() {
     std::memset(m_data.data(), 0, m_data.size());
 }
 
-void ImageBuffer::blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint8_t a, bool alphaLock) {
+void ImageBuffer::blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint8_t a, bool alphaLock, bool isEraser) {
     if (!isValidCoord(x, y)) return;
     
     size_t idx = pixelIndex(x, y);
@@ -56,15 +56,19 @@ void ImageBuffer::blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint
 
     float srcA = a / 255.0f;
     float dstA = dstAlphaRaw / 255.0f;
+
+    if (isEraser) {
+        // Subtractive Alpha
+        float outA = std::max(0.0f, dstA * (1.0f - srcA));
+        m_data[idx + 3] = static_cast<uint8_t>(std::clamp(outA * 255.0f, 0.0f, 255.0f));
+        return;
+    }
+
     float outA = srcA + dstA * (1.0f - srcA);
 
-    // Alpha Lock: restrict final alpha to original or blend but don't exceed?
-    // Usually Alpha Lock means Alpha is unchanged in the mask areas.
     if (alphaLock) {
         outA = dstA; 
         if (outA <= 0.001f) return;
-        // Re-adjust srcA to be relative to the lock if needed, 
-        // but typically it means we just blend color but keep dstA.
         srcA = std::min(srcA, outA); 
     }
     
@@ -74,12 +78,12 @@ void ImageBuffer::blendPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, uint
         m_data[idx + 1] = static_cast<uint8_t>(std::clamp((g * srcA + m_data[idx + 1] * dstA * invSrcA) / outA, 0.0f, 255.0f));
         m_data[idx + 2] = static_cast<uint8_t>(std::clamp((b * srcA + m_data[idx + 2] * dstA * invSrcA) / outA, 0.0f, 255.0f));
     }
-    m_data[idx + 3] = static_cast<uint8_t>(std::clamp(outA * 255, 0.0f, 255.0f));
+    m_data[idx + 3] = static_cast<uint8_t>(std::clamp(outA * 255.0f, 0.0f, 255.0f));
 }
 
 void ImageBuffer::drawCircle(int cx, int cy, float radius, 
                               uint8_t r, uint8_t g, uint8_t b, uint8_t a,
-                              float hardness, float grain, bool alphaLock, const ImageBuffer* mask) {
+                              float hardness, float grain, bool alphaLock, bool isEraser, const ImageBuffer* mask) {
     int minX = std::max(0, static_cast<int>(cx - radius - 1));
     int maxX = std::min(m_width - 1, static_cast<int>(cx + radius + 1));
     int minY = std::max(0, static_cast<int>(cy - radius - 1));
@@ -104,16 +108,22 @@ void ImageBuffer::drawCircle(int cx, int cy, float radius,
                     falloff = std::clamp(falloff, 0.0f, 1.0f);
                 }
 
-                // Grain (Noise) logic - Fast procedural grain
+                // Grain (Noise) logic - Coarser grain for organic look
                 float noise = 1.0f;
                 if (grain > 0.001f) {
-                    // Simple deterministic hash for stable grain during stroke
-                    uint32_t hash = (static_cast<uint32_t>(px) * 1597334677U) ^ (static_cast<uint32_t>(py) * 3812015801U);
+                    // Scale coordinates down to make grain "larger" and more organic
+                    float gx = px / 2.5f;
+                    float gy = py / 2.5f;
+                    uint32_t hash = (static_cast<uint32_t>(gx) * 1597334677U) ^ (static_cast<uint32_t>(gy) * 3812015801U);
                     hash *= 0x85ebca6b;
                     hash ^= hash >> 13;
                     hash *= 0xc2b2ae35;
                     float randVal = static_cast<float>(hash & 0xFFFF) / 65535.0f;
-                    noise = (1.0f - grain) + (randVal * grain);
+                    
+                    // Contrast the grain like in the Python version
+                    float grainVal = (randVal - 0.4f) * 2.0f + 0.5f;
+                    grainVal = std::clamp(grainVal, 0.0f, 1.0f);
+                    noise = (1.0f - grain) + (grainVal * grain);
                 }
                 
                 uint8_t pixelA = static_cast<uint8_t>(a * falloff * noise);
@@ -129,7 +139,7 @@ void ImageBuffer::drawCircle(int cx, int cy, float radius,
                 }
 
                 if (pixelA > 0) {
-                    blendPixel(px, py, r, g, b, pixelA, alphaLock);
+                    blendPixel(px, py, r, g, b, pixelA, alphaLock, isEraser);
                 }
             }
         }

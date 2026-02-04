@@ -12,6 +12,10 @@
 #include <QBuffer>
 #include <QUrl>
 #include <QFileInfo>
+#include <QGuiApplication>
+#include <QKeyEvent>
+#include <QTabletEvent>
+#include <QSvgRenderer>
 
 
 using namespace artflow;
@@ -186,7 +190,20 @@ void CanvasItem::setCursorRotation(float value) {
 }
 
 void CanvasItem::setZoomLevel(float zoom) { m_zoomLevel = zoom; emit zoomLevelChanged(); update(); }
-void CanvasItem::setCurrentTool(const QString &tool) { m_currentTool = tool; emit currentToolChanged(); }
+void CanvasItem::setCurrentTool(const QString &tool) { 
+    if (m_currentTool != tool) {
+        m_currentTool = tool; 
+        emit currentToolChanged(); 
+        
+        // Auto-apply default presets for tools
+        if (tool == "pencil") usePreset("Pencil HB");
+        else if (tool == "pen") usePreset("Ink Pen");
+        else if (tool == "brush") usePreset("Oil Paint");
+        else if (tool == "watercolor") usePreset("Watercolor");
+        else if (tool == "airbrush") usePreset("Soft");
+        else if (tool == "eraser") usePreset("Eraser Soft");
+    }
+}
 
 void CanvasItem::loadRecentProjectsAsync()
 {
@@ -229,8 +246,40 @@ QVariantList CanvasItem::_scanSync()
 }
 
 void CanvasItem::load_file_path(const QString &path) { loadProject(path); }
-void CanvasItem::handle_shortcuts(int key, int modifiers) { qDebug() << "Shortcut:" << key; }
-void CanvasItem::handle_key_release(int key) {}
+void CanvasItem::handle_shortcuts(int key, int modifiers) { 
+    bool ctrl = modifiers & Qt::ControlModifier;
+    bool shift = modifiers & Qt::ShiftModifier;
+
+    // Undo / Redo
+    if (ctrl && key == Qt::Key_Z) {
+        if (shift) qDebug() << "Redo not implemented yet"; 
+        else qDebug() << "Undo not implemented yet";
+    }
+    // Transform
+    else if (ctrl && key == Qt::Key_T) {
+        m_isTransforming = true;
+        emit isTransformingChanged();
+    }
+    // Select None
+    else if (ctrl && key == Qt::Key_D) {
+        // Clear selection logic
+    }
+    // Space (Pan)
+    else if (key == Qt::Key_Space) {
+        QGuiApplication::setOverrideCursor(Qt::OpenHandCursor);
+    }
+    // Tool Switches
+    else if (key == Qt::Key_B) setCurrentTool("brush");
+    else if (key == Qt::Key_E) setCurrentTool("eraser");
+    else if (key == Qt::Key_L) setCurrentTool("lasso");
+    else if (key == Qt::Key_V) setCurrentTool("move");
+}
+
+void CanvasItem::handle_key_release(int key) {
+    if (key == Qt::Key_Space) {
+        QGuiApplication::restoreOverrideCursor();
+    }
+}
 void CanvasItem::fitToView() { qDebug() << "Fitting to view"; }
 
 void CanvasItem::addLayer()
@@ -336,18 +385,32 @@ void CanvasItem::updateLayersList() {
     for (int i = 0; i < m_layerManager->getLayerCount(); ++i) {
         Layer* l = m_layerManager->getLayer(i);
         QVariantMap layer;
-    layer["layerId"] = i;
-    layer["name"] = QString::fromStdString(l->name);
-    layer["visible"] = l->visible;
-    layer["opacity"] = l->opacity;
-    layer["locked"] = l->locked;
-    layer["alpha_lock"] = l->alphaLock;
-    layer["clipped"] = l->clipped;
-    layer["is_private"] = l->isPrivate;
-    layer["active"] = (i == m_activeLayerIndex);
-    layer["type"] = (i == 0) ? "background" : "drawing"; 
-    layer["thumbnail"] = ""; 
-    layerList.prepend(layer); 
+        layer["layerId"] = i;
+        layer["name"] = QString::fromStdString(l->name);
+        layer["visible"] = l->visible;
+        layer["opacity"] = l->opacity;
+        layer["locked"] = l->locked;
+        layer["alpha_lock"] = l->alphaLock;
+        layer["clipped"] = l->clipped;
+        layer["is_private"] = l->isPrivate;
+        layer["active"] = (i == m_activeLayerIndex);
+        layer["type"] = (i == 0) ? "background" : "drawing"; 
+        
+        // Add thumbnail if active or requested (real app would cache these)
+        if (i == m_activeLayerIndex || i == 0) {
+            int tw = 60, th = 40;
+            QImage full(l->buffer->data(), m_canvasWidth, m_canvasHeight, QImage::Format_RGBA8888);
+            QImage thumb = full.scaled(tw, th, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QByteArray ba;
+            QBuffer buffer(&ba);
+            buffer.open(QIODevice::WriteOnly);
+            thumb.save(&buffer, "PNG");
+            layer["thumbnail"] = "data:image/png;base64," + ba.toBase64();
+        } else {
+            layer["thumbnail"] = "";
+        }
+
+        layerList.prepend(layer); 
     }
     emit layersChanged(layerList);
 }
@@ -599,45 +662,57 @@ void CanvasItem::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
         m_isDrawing = true;
-        m_lastPos = (event->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
-        
-        Layer* layer = m_layerManager->getActiveLayer();
-        if (layer) {
-            ImageBuffer* mask = nullptr;
-            if (layer->clipped && m_activeLayerIndex > 0) {
-                Layer* parent = m_layerManager->getLayer(m_activeLayerIndex - 1);
-                if (parent) mask = parent->buffer.get();
-            }
-
-            m_brushEngine->beginStroke(StrokePoint(m_lastPos.x(), m_lastPos.y()));
-            m_brushEngine->renderDab(*(layer->buffer), m_lastPos.x(), m_lastPos.y(), 1.0f, layer->alphaLock, mask);
-            update();
-        }
+        QPointF p = (event->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
+        m_brushEngine->beginStroke(StrokePoint(p.x(), p.y(), 1.0f));
+        processDrawing(p, 1.0f);
     }
 }
 
 void CanvasItem::mouseMoveEvent(QMouseEvent *event)
 {
-    QPointF currentPos = (event->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
+    QPointF p = (event->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
     emit cursorPosChanged(event->position().x(), event->position().y());
 
     if (m_isDrawing) {
-        Layer* layer = m_layerManager->getActiveLayer();
-        if (layer) {
-            ImageBuffer* mask = nullptr;
-            if (layer->clipped && m_activeLayerIndex > 0) {
-                Layer* parent = m_layerManager->getLayer(m_activeLayerIndex - 1);
-                if (parent) mask = parent->buffer.get();
-            }
-
-            m_brushEngine->renderStrokeSegment(*(layer->buffer), 
-                StrokePoint(m_lastPos.x(), m_lastPos.y()), 
-                StrokePoint(currentPos.x(), currentPos.y()),
-                layer->alphaLock, mask);
-            m_lastPos = currentPos;
-            update();
-        }
+        processDrawing(p, 1.0f);
     }
+}
+
+void CanvasItem::tabletEvent(QTabletEvent *event) {
+    QPointF p = (event->position() - m_viewOffset * m_zoomLevel) / m_zoomLevel;
+    float pressure = event->pressure();
+    
+    if (event->type() == QEvent::TabletPress) {
+        m_isDrawing = true;
+        m_brushEngine->beginStroke(StrokePoint(p.x(), p.y(), pressure));
+        processDrawing(p, pressure);
+    } else if (event->type() == QEvent::TabletMove && m_isDrawing) {
+        processDrawing(p, pressure);
+    } else if (event->type() == QEvent::TabletRelease) {
+        m_isDrawing = false;
+        m_brushEngine->endStroke();
+        capture_timelapse_frame();
+    }
+    event->accept();
+}
+
+void CanvasItem::processDrawing(const QPointF &pos, float pressure) {
+    Layer* layer = m_layerManager->getActiveLayer();
+    if (!layer) return;
+
+    ImageBuffer* mask = nullptr;
+    if (layer->clipped && m_activeLayerIndex > 0) {
+        Layer* parent = m_layerManager->getLayer(m_activeLayerIndex - 1);
+        if (parent) mask = parent->buffer.get();
+    }
+
+    m_brushEngine->renderStrokeSegment(*(layer->buffer), 
+        StrokePoint(m_lastPos.x(), m_lastPos.y(), 1.0f), // Simplified last pressure
+        StrokePoint(pos.x(), pos.y(), pressure),
+        layer->alphaLock, mask);
+    
+    m_lastPos = pos;
+    update();
 }
 
 void CanvasItem::mouseReleaseEvent(QMouseEvent *event)
