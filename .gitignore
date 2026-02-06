@@ -1,0 +1,30 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Compilados de C++ y Build
+build/
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Archivos de Qt instalados localmente
+Qt/
+.qmake.stash
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Archivos de IDE
+.vscode/
+.idea/
+.vs/
+*.user
+
+# Logs y temporales
+*.log
+*.tmp
